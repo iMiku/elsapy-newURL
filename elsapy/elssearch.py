@@ -16,7 +16,8 @@ class ElsSearch():
          through api.elsevier.com. Returns True if successful; else, False."""
 
     # static / class variables
-    _base_url = u'https://api.elsevier.com/content/search/'
+    #_base_url = u'https://api.elsevier.com/content/search/'
+    _base_url = u'https://api.elsevier.com/content/search/scopus/'
     _cursored_indexes = [
         'scopus',
     ]
@@ -26,8 +27,8 @@ class ElsSearch():
         self.query = query
         self.index = index
         self._cursor_supported = (index in self._cursored_indexes)
-        self._uri = self._base_url + self.index + '?query=' + url_encode(
-                self.query)
+        #self._uri = self._base_url + self.index + '?query=' + url_encode(self.query)
+        self._uri = self._base_url + '?query=' + url_encode(self.query)
         self.results_df = pd.DataFrame()
 
     # properties
